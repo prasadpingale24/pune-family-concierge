@@ -1,12 +1,33 @@
-from fastapi import APIRouter, HTTPException, Request
+from fastapi import APIRouter, HTTPException, Query
+from fastapi.responses import PlainTextResponse
 from app.schemas.whatsapp import WhatsAppWebhookPayload
-from app.schemas.internal import BotResponse
 from app.adapters.whatsapp import WhatsAppAdapter
 from app.services.intent_service import IntentDetector
 from app.services.response_builder import ResponseBuilder
 from app.core.logging_config import logger
+from app.core.config import settings
 
 router = APIRouter()
+
+
+@router.get("/whatsapp", response_class=PlainTextResponse)
+async def verify_whatsapp_webhook(
+    hub_mode: str = Query(alias="hub.mode"),
+    hub_verify_token: str = Query(alias="hub.verify_token"),
+    hub_challenge: str = Query(alias="hub.challenge"),
+):
+    """
+    Verification endpoint for WhatsApp Cloud API webhook setup.
+    """
+    logger.info("Received WhatsApp webhook verification request")
+
+    if hub_mode == "subscribe" and hub_verify_token == settings.WHATSAPP_VERIFY_TOKEN:
+        logger.info("WhatsApp webhook verification succeeded")
+        return hub_challenge
+
+    logger.warning("WhatsApp webhook verification failed")
+    raise HTTPException(status_code=403, detail="Verification token mismatch")
+
 
 @router.post("/whatsapp")
 async def whatsapp_webhook(payload: WhatsAppWebhookPayload):

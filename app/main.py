@@ -16,7 +16,19 @@ app.include_router(webhook_router, prefix=settings.API_V1_STR, tags=["webhook"])
 async def root():
     return {"message": "Welcome to Pune Family Concierge Bot API", "status": "running"}
 
+
+@app.get("/health")
+async def health():
+    return {"status": "ok"}
+
+
 if __name__ == "__main__":
     import uvicorn
+
     logger.info("Starting Pune Family Concierge Bot...")
-    uvicorn.run("app.main:app", host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run(
+        "app.main:app",
+        host=settings.APP_HOST,
+        port=settings.APP_PORT,
+        reload=settings.APP_ENV == "dev",
+    )
