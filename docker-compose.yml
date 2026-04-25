@@ -5,9 +5,9 @@ services:
       dockerfile: Dockerfile
     container_name: pune-family-concierge-api
     env_file:
-      - .env.dev
+      - .env.staging
     environment:
-      APP_ENV: dev
+      APP_ENV: staging
       APP_HOST: 0.0.0.0
       APP_PORT: 8001
     ports:
