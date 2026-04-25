@@ -15,9 +15,9 @@ COPY app ./app
 
 USER app
 
-EXPOSE 8000
+EXPOSE 8001
 
 HEALTHCHECK --interval=30s --timeout=5s --start-period=15s --retries=3 \
-  CMD python -c "from urllib.request import urlopen; urlopen('http://127.0.0.1:8000/health')"
+  CMD python -c "from urllib.request import urlopen; urlopen('http://127.0.0.1:8001/health')"
 
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8001", "--proxy-headers", "--forwarded-allow-ips=*"]

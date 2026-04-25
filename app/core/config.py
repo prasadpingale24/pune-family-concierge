@@ -22,7 +22,7 @@ class Settings:
     PROJECT_NAME: str = "Pune Family Concierge"
     APP_ENV: str = os.getenv("APP_ENV", "dev")
     APP_HOST: str = os.getenv("APP_HOST", "0.0.0.0")
-    APP_PORT: int = int(os.getenv("APP_PORT", "8000"))
+    APP_PORT: int = int(os.getenv("APP_PORT", "8001"))
     API_V1_STR: str = "/api/v1"
 
 
