@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pune Family Concierge</title>
+    <style>
+        body { font-family: 'Inter', sans-serif; max-width: 800px; margin: 0 auto; padding: 2rem; background-color: #f8f9fa; color: #212529; }
+        .header { text-align: center; margin-bottom: 3rem; }
+        .search-container { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .input-group { display: flex; gap: 0.5rem; }
+        input[type="text"] { flex-grow: 1; padding: 0.75rem; border: 1px solid #dee2e6; border-radius: 6px; font-size: 1rem; }
+        button { background-color: #0d6efd; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 6px; cursor: pointer; font-weight: bold; }
+        button:hover { background-color: #0b5ed7; }
+        .suggestions { margin-top: 1rem; font-size: 0.9rem; color: #6c757d; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Pune Family Concierge</h1>
+        <p>Your local guide to food and family occasions in Pune.</p>
+    </div>
+
+    <div class="search-container">
+        <form action="/search" method="post">
+            <div class="input-group">
+                <input type="text" name="query" placeholder="Try 'veg restaurants in baner' or 'what is famous in camp'?" required>
+                <button type="submit">Search</button>
+            </div>
+        </form>
+        <div class="suggestions">
+            Try: <a href="#" onclick="document.getElementsByName('query')[0].value='veg restaurants in baner'; return false;">veg restaurants in baner</a>, 
+            <a href="#" onclick="document.getElementsByName('query')[0].value='what is famous in fc road'; return false;">famous in fc road</a>
+        </div>
+    </div>
+</body>
+</html>

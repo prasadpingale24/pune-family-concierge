@@ -19,12 +19,11 @@ elif (BASE_DIR / ".env.dev").exists():
 
 
 class Settings:
-    PROJECT_NAME: str = "Pune Family Concierge Bot"
+    PROJECT_NAME: str = "Pune Family Concierge"
     APP_ENV: str = os.getenv("APP_ENV", "dev")
     APP_HOST: str = os.getenv("APP_HOST", "0.0.0.0")
     APP_PORT: int = int(os.getenv("APP_PORT", "8000"))
-    API_V1_STR: str = "/webhook"
-    WHATSAPP_VERIFY_TOKEN: str = os.getenv("WHATSAPP_VERIFY_TOKEN", "change-me")
+    API_V1_STR: str = "/api/v1"
 
 
 settings = Settings()

@@ -1,3 +1,4 @@
+from typing import Any, Dict, Optional
 from pydantic import BaseModel
 
 class UserMessage(BaseModel):
@@ -6,3 +7,5 @@ class UserMessage(BaseModel):
 
 class BotResponse(BaseModel):
     reply: str
+    intent: Optional[str] = None
+    data: Optional[Dict[str, Any]] = None
