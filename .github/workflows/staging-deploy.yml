@@ -27,7 +27,7 @@ jobs:
 
             echo "🚀 Starting deployment..."
 
-            cd ~/projects/punegappa-staging
+            cd ~/projects/punegappa-staging/pune-family-concierge
 
             echo "📥 Pulling latest code..."
             git fetch origin
